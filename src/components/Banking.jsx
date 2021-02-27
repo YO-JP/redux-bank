@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {deposit, withdraw, collectInterest, deleteAccount} from "../actions/bankingActions";
+import {deposit, withdraw, collectInterest, deleteAccount, toggleAccount} from "../actions/bankingActions";
 
 const Banking = () => {
     const [amount, setAmount] = useState("")
@@ -23,12 +23,12 @@ const Banking = () => {
         dispatch(deleteAccount())
     };
     const handleAccountChange = () => {
-
+            dispatch(toggleAccount())
     };
 
     return (
         <div className="form-group">
-            <input value={amount} onChange={(e) => setAmount(e.target.value)} type="text" className="form-control"/>
+            <input value={amount} onChange={(e) => setAmount(e.target.value)} type="number"  className="form-control"/>
             <button onClick={handleDeposit} className="btn btn-success">Deposit</button>
             <button onClick={handleWithdraw} className="btn btn-primary">Withdraw</button>
             <button onClick={handleCollectInterest} className="btn btn-warning">Collect Interest</button>
